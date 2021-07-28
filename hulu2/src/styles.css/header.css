@@ -1,0 +1,19 @@
+.icon{
+    height: 100px;
+    width:200px
+}
+.icon-row{
+    display: flex;
+    flex-grow: inherit;
+    justify-content: space-evenly;
+
+}
+.icon-div{
+   display: flex;
+   cursor: pointer;
+   flex-direction: row;
+   cursor: pointer;
+   
+   /* flex-col items-center cursor-pointer group w-12
+         sm:w-20 hover:text-white */
+}

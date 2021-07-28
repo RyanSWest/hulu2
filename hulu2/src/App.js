@@ -4,7 +4,9 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import './requests';
 import requests from "./requests";
-import './nav.css'
+import Results  from "./components/Results";
+import './nav.css';
+import Header from './components/Header';
 const API_KEY = "32f21cfa647f7c3b7282a6473a7cfdc4";
 
 function App() {
@@ -22,18 +24,21 @@ function App() {
    
 
   const getGenre =(id)=> {
-    axios.get( `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${id}`)
+    axios.get( `${baseUrl}${API_KEY}&with_genres=${id}`)
     .then(res => setMovies(res.data.results))
   }
 
-  console.log("Movies", movies);
-  return (
+   return (
     <div className="App">
+      <Header/>
       
        
-      
+      <div className = 'nav' >
+                  
       {requests.map (r=> {
         return(
+
+          
           <div className = 'nav-div'>
           <h4
            onClick={()=> getGenre(r.num)   }
@@ -47,15 +52,14 @@ function App() {
         )
 
       })}
-      
+      </div>
 
-      {movies.map((m) => {
-        return (
-          <>
-            <h2>{m.title}</h2>
-          </>
-        );
-      })}
+      <Results
+      movies = {movies}
+      
+      />
+
+      
     </div>
   );
 }
